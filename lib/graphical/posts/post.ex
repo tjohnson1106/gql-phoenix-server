@@ -1,6 +1,7 @@
 defmodule Graphical.Posts.Post do
   use Ecto.Schema
   import Ecto.Changeset
+  alias Graphical.Posts.Post
 
 
   schema "posts" do
@@ -12,9 +13,9 @@ defmodule Graphical.Posts.Post do
   end
 
   @doc false
-  def changeset(post, attrs) do
+  def changeset(%Post{} = post, attrs) do
     post
-    |> cast(attrs, [:title, :body])
-    |> validate_required([:title, :body])
+    |> cast(attrs, [:title, :body, :user_id])
+    |> validate_required([:title, :body, :user_id])
   end
 end
