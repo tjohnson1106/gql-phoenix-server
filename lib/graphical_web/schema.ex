@@ -8,9 +8,14 @@ defmodule GraphicalWeb.Schema do
             resolve &Graphical.PostResolver.all/2
         end
 
-    field :users, list_of(:users) do
+    field :users, list_of(:user) do
         resolve &Graphical.UserResolver.all/2
 
       end
-   end 
+   
+      field :user, type: :user do
+          arg :id, non_null(:id)
+          resolve &Graphical.UserResolver.find/2
+      end 
+    end 
 end
