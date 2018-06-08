@@ -16,8 +16,5 @@ defmodule GraphicalWeb.Schema.Types do
         field :body, :string
         field :user, :user, resolve: assoc(:user) 
     
-        
     end
-
-
 end
