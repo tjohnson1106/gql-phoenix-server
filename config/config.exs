@@ -17,6 +17,12 @@ config :graphical, GraphicalWeb.Endpoint,
   pubsub: [name: Graphical.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+
+config :graphical, Graphical.Guardian,
+issuer: "graphical",
+secret_key: "dNgFGziXpkKLBKlBqkB8quK6VKRBXrTZQfMh8fManbj06fAQ+vr5D8nIP5OW+UHr"
+
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
