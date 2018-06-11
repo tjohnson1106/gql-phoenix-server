@@ -31,7 +31,7 @@ defmodule GraphicalWeb.Schema do
     input_object :update_user_params do
         field :name, :string
         field :email, :string
-        field: :password :string
+        field :password, :string
     end
 
 
@@ -40,6 +40,8 @@ defmodule GraphicalWeb.Schema do
          field :update_user, type: :user do
              arg :id, non_null(:integer)
              arg :user, :update_user_params
+
+             resolve &Graphical.UserResolver.update/2
         
             end
 
