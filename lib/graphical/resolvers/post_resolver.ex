@@ -1,8 +1,22 @@
 defmodule Graphical.PostResolver do
     alias Graphical.Posts
+    import Ecto.Query, only: [where:2]
+    alias Graphical.Posts.Post
+    alias Graphical.Repo
+
+    def all(_args,%{context: %{current_user: %{id: id}}}) do
+        posts =
+         Post
+         |> where(user_id: ^id)
+         |> Repo.all   
+
+
+
+        {:ok, posts}
+    end
 
     def all(_args, _info) do
-        {:ok, Posts.list_posts()}
+        {:error, "Not Authorized"}
     end
 
     def create(args, _info) do
