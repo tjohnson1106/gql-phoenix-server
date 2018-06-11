@@ -8,4 +8,10 @@ defmodule Graphical.PostResolver do
     def create(args, _info) do
         Posts.create_post(args)
     end
+
+    def update(%{id: id, post: post_params}, _info) do
+        Posts.get_post!(id)
+        |> Posts.update_post(post_params)
+    end
+
 end

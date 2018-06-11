@@ -18,13 +18,13 @@ defmodule GraphicalWeb.Schema do
           resolve &Graphical.UserResolver.find/2
       end 
 
-     input_object :update_post_params do
-        arg :title, non_null(:string)
-        arg :body, non_null(:string)
-        arg :user_id, non_null(:integer)
+    end
 
-         
-     end
+     input_object :update_post_params do
+        field :title, non_null(:string)
+        field :body, non_null(:string)
+        field :user_id, non_null(:integer)
+
 
     end 
 
@@ -36,5 +36,19 @@ defmodule GraphicalWeb.Schema do
 
         resolve &Graphical.PostResolver.create/2
     end 
+
+    field :update_post, type: :post do
+        arg :id, non_null(:integer)
+        arg :post, :update_post_params
+
+        resolve &Graphical.PostResolver.update/2
+    end
+
+    field :delete_post, type: :post do
+        arg :id, non_null(:integer)
+
+        resolve &Graphical.PostResolver.delete/2
+    end
+
   end
 end
