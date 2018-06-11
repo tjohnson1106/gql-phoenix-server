@@ -69,3 +69,4 @@ defp check_password(user, password) do
     _ -> Comeonin.Bcrypt.checkpw(password, user.password_hash)
   end
 end
+end

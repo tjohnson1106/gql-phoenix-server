@@ -1,14 +1,14 @@
 defmodule Graphical.PostResolver do
     alias Graphical.Posts
-    import Ecto.Query, only: [where:2]
+    import Ecto.Query, only: [where: 2]
     alias Graphical.Posts.Post
     alias Graphical.Repo
 
-    def all(_args,%{context: %{current_user: %{id: id}}}) do
+    def all(_args, %{context: %{current_user: %{id: id}}}) do
         posts =
          Post
          |> where(user_id: ^id)
-         |> Repo.all   
+         |> Graphical.Repo.all   
 
 
 

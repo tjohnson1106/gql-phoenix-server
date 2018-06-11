@@ -70,7 +70,7 @@ defmodule GraphicalWeb.Schema do
         resolve &Graphical.PostResolver.delete/2
     end
 
-    field :login, type: :user do
+    field :login, type: :session do
         arg :email, non_null(:string)
         arg :password, non_null(:string)
 
