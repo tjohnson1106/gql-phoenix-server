@@ -73,6 +73,12 @@ defmodule Graphical.Accounts do
     |> Repo.update()
   end
 
+  def store_user(%User{} = user, token) do
+    user
+    |> User.store_token_changeset(%{token: token})
+    |> Repo.update()
+  end
+
   @doc """
   Deletes a User.
 
